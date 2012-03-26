@@ -35,7 +35,8 @@ abstract class State {
 
         for (i = 0; i < boardSize; i++) {
             for (j = 0; j < boardSize; j++) {
-                if (q[i].getIndexOfX() == q[j].getIndexOfX()
+                if (i==j) continue;
+                if (q[i].getIndexOfX() == q[j].getIndexOfX() // same row
                         || q[i].getIndexOfY() == q[j].getIndexOfY() //same column
                         || (q[i].getIndexOfX() - q[j].getIndexOfX() == q[i].getIndexOfY() - q[j].getIndexOfY()) // same diagonal
                         || (q[i].getIndexOfX() - q[j].getIndexOfX() == q[j].getIndexOfY() - q[i].getIndexOfY())) { //same counter diagonal
