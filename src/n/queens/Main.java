@@ -8,21 +8,25 @@ public class Main {
 
     public static void main(String[] args) {
         long time;
-        for (int i = 3; i < 20; i++) {
-            time = System.currentTimeMillis();
+        NQueen nq;
+        int tollerence = 0;
+        for (int i = 4; i < 20; i++) {
             System.out.println("N = " + i);
-            System.out.println("Brute Force approach");
-            NQueen nq = new BruteForce(10);
-            nq.solve();
-            nq.show();
-            System.out.println("Total Time taken :" + (System.currentTimeMillis() - time));
-            time = System.currentTimeMillis();
             System.out.println("Simulated Annealing approach");
-            nq = new SimulatedAnnealing(10);
+            nq = new SimulatedAnnealing(i,tollerence,1000);
+            time = System.currentTimeMillis();
             nq.solve();
+            time = System.currentTimeMillis()-time;
             nq.show();
-            System.out.println("Total Time taken :" + (System.currentTimeMillis() - time));
+            System.out.println("Total Time taken :" + time);
+            System.out.println("Brute Force approach");
+            nq = new BruteForce(i,tollerence);
+            time = System.currentTimeMillis();
+            nq.solve();
+            time = System.currentTimeMillis()-time;
+            nq.show();
+            System.out.println("Total Time taken :" + time);
         }
-        
+
     }
 }
