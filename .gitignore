@@ -1,4 +1,6 @@
 ./build
 ./nbproject
 ./build.xml
-,/manifest.mf
+./manifest.mf
+./gitignore
+
