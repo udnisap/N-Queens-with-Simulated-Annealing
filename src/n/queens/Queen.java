@@ -37,5 +37,12 @@ public class Queen {
         public void moveRight(){
             indexOfY++;
         }
+
+    @Override
+    public boolean equals(Object obj) {
+        Queen next = (Queen)(obj);
+        return (next.indexOfX==this.indexOfX && next.indexOfY==this.indexOfY);
+    }
+        
 }
 
