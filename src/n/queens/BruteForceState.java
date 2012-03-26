@@ -19,35 +19,20 @@ public class BruteForceState extends State {
         cost = 0;
     }
 
-
     @Override
     public State getNextState() {
-        int lastQ = boardSize - 1;
-        while (lastQ != 0) {
-            q[lastQ].moveRight();
-            lastQ = boardSize - 1;
-            while (q[lastQ].getIndexOfY() < boardSize && checkAttack()) {
+        int lastQ = q.length - 1;
+        int boardSize = q.length;
+
+        while (lastQ>=0) {
+            if (q[lastQ].indexOfY < q.length - 1) {
                 q[lastQ].moveRight();
-            }
-            if (q[lastQ].getIndexOfY() >= boardSize) {
+                return this;
+            }else{
                 q[lastQ].setIndexOfY(0);
                 lastQ--;
-            }else{
-                return this;
-            }
+            }   
         }
         return null;
-    }
-
-    private boolean checkAttack() {
-        for (int i = 0; i < boardSize; i++) {
-            for (int j = i + 1; j < boardSize; j++) {
-                int fx = q[i].getIndexOfX(), fy = q[i].getIndexOfY(), sx = q[j].getIndexOfX(), sy = q[j].getIndexOfY();
-                if (fx == sx || fy == sy || Math.abs(fx - sx) == Math.abs(fy - sy)) {
-                    return true;
-                }
-            }
-        }
-        return false;
     }
 }
