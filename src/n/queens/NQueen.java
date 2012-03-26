@@ -6,16 +6,19 @@ package n.queens;
  */
 abstract class NQueen {
 
-    protected  int boardSize;
-    protected  State currentState, nextState;
+    protected int boardSize;
+    protected State currentState, nextState;
+    protected int tollerenceCost;
 
-    public NQueen(int boardSize) {
+    public NQueen(int boardSize, int tollrence) {
         this.boardSize = boardSize;
+        this.tollerenceCost = tollrence;
     }
 
     abstract public void solve();
 
     public void show() {
+        System.out.println("Total Cost of " + currentState.getCost());
         int temp = 0;
         Queen q[] = currentState.getQueens();
         boolean queen = false;
@@ -33,14 +36,21 @@ abstract class NQueen {
                 }
 
                 if (queen) {
-                    System.out.print("" + temp);
+                    System.out.print("" + temp + "\t");
                     queen = false;
                 } else {
-                    System.out.print("*");
+                    System.out.print("*\t");
                 }
             }
 
             System.out.println();
         }
+    }
+
+    protected boolean isSolvedPossition(State s) {
+        if (s.getCost() <= tollerenceCost) {
+            return true;
+        }
+        return false;
     }
 }
