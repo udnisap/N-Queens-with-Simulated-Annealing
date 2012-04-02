@@ -6,11 +6,11 @@ package n.queens;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         long time;
         NQueen nq;
         int tollerence = 0;
-        for (int i = 4; i < 20; i++) {
+        for (int i =1; i < 20; i++) {
             System.out.println("N = " + i);
             System.out.println("Simulated Annealing approach");
             nq = new SimulatedAnnealing(i,tollerence,1000);
