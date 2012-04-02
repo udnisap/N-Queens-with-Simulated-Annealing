@@ -13,6 +13,8 @@ abstract class NQueen {
     public NQueen(int boardSize, int tollrence) {
         this.boardSize = boardSize;
         this.tollerenceCost = tollrence;
+        if (boardSize<4)
+            throw new UnsupportedOperationException("No of N should be more than 3 to solve the problem");
     }
 
     abstract public void solve();
